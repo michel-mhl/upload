@@ -28,10 +28,11 @@ public class Disco {
 	public void salvar(String diretorio, MultipartFile arquivo) {
 		Path diretorioPath = Paths.get(this.raiz, diretorio);
 		Path arquivoPath = diretorioPath.resolve(arquivo.getOriginalFilename());
-		System.out.println("criado");
+		
 		try {
 			Files.createDirectories(diretorioPath);
 			arquivo.transferTo(arquivoPath.toFile());	
+			System.out.println("criado novo");
 		} catch (IOException e) {
 			throw new RuntimeException("Problemas na tentativa de salvar arquivo.", e);
 		}	
